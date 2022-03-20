@@ -90,8 +90,8 @@ button.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.
     color: #FC9918;
 }
 
-button.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeSmall.MuiButton-textSizeSmall.MuiButtonBase-root.css-1knaqv7-MuiButtonBase-root-MuiButton-root {
+.buttons-navbar-container button {
+    border-color: #FC9918;
     color: #FC9918;
 }
-
 

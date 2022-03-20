@@ -2,12 +2,14 @@ import React from "react";
 // FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTicket } from '@fortawesome/free-solid-svg-icons'
-// estilo
+// styles
 import './static/style/navbar.css'
 // Material-UI 
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Box from '@mui/material/Box';
+// local files
+import CartWidget from '../cartWidget/CartWidget'
 
 function NavBar(){
     return (
@@ -20,18 +22,17 @@ function NavBar(){
             <div className="buttons-navbar-container">
                 <Box className="buttons-group-nav">
                     <ButtonGroup variant="text" aria-label="text button group" className="buttons-group">
-                        <Button>Inicio</Button>
-                        <Button>Películas</Button>
+                        <Button>Home</Button>
+                        <Button>Movies</Button>
                         <Button>Series</Button>
-                        <Button>Mi Lista</Button>
+                        <Button>My List</Button>
                     </ButtonGroup>
                 </Box>
-                {/* <div>
-                    <Button variant="text" size="small">Carrito</Button>
-                    
-                </div> */}
+
+                <CartWidget />
+  
                 <div>
-                    <Button variant="text" size="small">Cuenta</Button>
+                    <Button variant="text" size="small">Login</Button>
                 </div>
             </div>
         </header>

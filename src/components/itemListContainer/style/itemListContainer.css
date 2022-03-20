@@ -1,0 +1,14 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ! colocar carrousel */
+.list-container {
+    /* border: solid 1px green; */
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+}

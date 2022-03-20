@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.item-container {
+    /* border: solid 1px yellow; */
+    width: 250px;
+    height: fit-content;
+    margin: 10px;
+    position: relative;
+}
+
+.item-container:hover {
+    transform: scale(105%);
+    box-shadow: 3px 3px 4px #f14a16;
+}
+
+.item-container > div {
+    background-color: #18022ccf;
+    color: #F14A16;
+}
+
+.card-content > p {
+    color: #FC9918;
+    display: flex;
+    align-content: space-between;
+}
+
+.item-container .card-actions > button {
+    color: #F14A16;
+}
+
