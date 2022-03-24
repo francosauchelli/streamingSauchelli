@@ -1,10 +1,60 @@
-import React from 'react'
+import React, { useState } from 'react'
 // style
 import './static/style/Cards.css'
 // Material-ui 
-import { Card, CardActionArea, CardMedia, CardContent, Typography, CardActions, Button } from '@mui/material';
+import { Card,
+    CardActionArea,
+    CardMedia,
+    CardContent,
+    Typography,
+    CardActions,
+    Button} from '@mui/material';
+// local files
+import ItemCount from '../itemCount/ItemCount'
 
 const Cards = (props) =>{
+    // ! pasar lógica a otro archivo
+    // counter model
+    const [ count, setCount ] = useState(0)
+
+    const addUnity = ()=> {
+        if(count < 4 ){
+            setCount( count + 1 );
+        }
+    }
+
+    const removeUnity = () => {
+        if(count > 0){
+            setCount( count - 1 );
+        }
+    }
+
+    // add button
+    const [add, setAdd] = useState()
+
+    const addToCart = () => {
+        const currentLimitOrder = 3;
+
+        let message = `${count} days of ${title}'s ${genre}\n`
+        message += `had been added to cart.`
+        
+        let limitMessage = `Sorry, currently the limit order per movie`
+        limitMessage += ` is ${currentLimitOrder} days.`
+
+        if(count>0 && count<4){
+            alert(message);
+        } 
+        else if (count>3){
+            alert(limitMessage)
+        }
+        else{
+            alert(`You must add at least one day`)
+        }
+
+    };
+
+    // ! fin lógica
+
     const {img, title, genre, duration, type} = props;
 
     return(
@@ -33,9 +83,14 @@ const Cards = (props) =>{
                     </CardContent>
                 </CardActionArea>
                 <CardActions className="card-actions">
-                    <Button size="small">
-                        Buy
+                    <Button onClick={ addToCart }size="small">
+                        Buy/See
                     </Button>
+                    <ItemCount
+                        addUnity={ addUnity }
+                        removeUnity={ removeUnity }
+                        count={ count }
+                    />
                 </CardActions>
             </Card>
         </div>

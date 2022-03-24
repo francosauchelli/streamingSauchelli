@@ -28,9 +28,7 @@ function NavBar(){
                         <Button>My List</Button>
                     </ButtonGroup>
                 </Box>
-
                 <CartWidget />
-  
                 <div>
                     <Button variant="text" size="small">Login</Button>
                 </div>
