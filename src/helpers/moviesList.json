@@ -1,0 +1,36 @@
+{
+    "mockDB": [
+        { 
+            "id": "1",
+            "img":"test.png", 
+            "title": "Interestellar", 
+            "genre": "Science fiction",
+            "type": "Movie",
+            "duration": "169m"
+        },
+        {
+            "id": "2",
+            "img": "test2.png", 
+            "title": "1917", 
+            "genre": "Emotional",
+            "type": "Movie",
+            "duration": "119m"
+        },
+        {
+            "id": "3",
+            "img": "test3.png", 
+            "title": "Split", 
+            "genre": "Thriller",
+            "type": "Movie",
+            "duration": "117m"
+        },
+        {
+            "id": "4",
+            "img": "test4.png", 
+            "title": "Ozark", 
+            "genre": "Thriller/Crime",
+            "type": "Serie",
+            "duration": "4 seasons"
+        }
+    ]
+}

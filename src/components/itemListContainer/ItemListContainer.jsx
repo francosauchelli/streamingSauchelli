@@ -1,46 +1,56 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 // style
 import './style/itemListContainer.css'
 // local file
 import Cards from '../cards/Cards'
-// test image
-import testImage from '../cards/test.png';
-import testImage2 from '../cards/test2.png';
-import testImage3 from '../cards/test3.png';
-import testImage4 from '../cards/test4.png';
+import Facebook from '../preloader/Preloader'
+// data from movesList.json
+import mockDB from '../../helpers/moviesList.json'
 
 
 const ItemListContainer = () =>{
+    // ! separar lógica
+    const [ showSkeleton, setShowSkeleton ] = useState(true);
+
+    const getMovies = () => {
+        return new Promise((resolve, reject) => {
+            return setTimeout( () => {
+
+                resolve(mockDB.mockDB)
+            },3000)
+        })
+    }
+
+    useEffect( () => {
+        getMovies().then( (movie) => {
+            // to remove skeleton
+            setShowSkeleton(false)
+            // to get movies data
+            setMovies(movie)
+        }).finally( () => {
+            console.log("MockDB downloaded.")
+        })
+    })
+
+    const [ movies, setMovies ] = useState([])
+    // ! final lógica
+    
+
     return(
         <div className="list-container">
-            <Cards 
-                img={ testImage } 
-                title="Interestellar" 
-                genre="Science fiction"
-                type="Movie"
-                duration="169m"
-            />
-            <Cards 
-                img={ testImage2 } 
-                title="1917" 
-                genre="Emotional"
-                type="Movie"
-                duration="119m"
-            />
-            <Cards 
-                img={ testImage3 } 
-                title="Split" 
-                genre="Thriller"
-                type="Movie"
-                duration="117m"
-            />
-            <Cards 
-                img={ testImage4 } 
-                title="Ozark" 
-                genre="Threiller/Crim"
-                type="Serie"
-                duration="4 seasons"
-            />
+            <Facebook  loading={ showSkeleton } />
+            {movies.map( (movie) => {
+                const {id, img, title, genre, type, duration } = movie
+                return(
+                    <Cards key={ id }
+                        img={ `./assets/${img}` }
+                        title={ title } 
+                        genre={ genre }
+                        type={ type }
+                        duration={ duration }
+                    />
+                )
+            })}
         </div>
     )
 }

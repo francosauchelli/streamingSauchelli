@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.skeleton-container .skeleton-img {
+    background-color: #250544cf;
+}
+
+.skeleton-container .skeleton-content {
+    background-color: #18022ced;
+}
+
+.skeleton-container .skeleton-actions {
+    background-color: #18022ced;
+}
+
+.skeleton-container .css-635wgq-MuiSkeleton-root::after {
+    background: linear-gradient(90deg, transparent, #f149160e, transparent);
+}
+
+.skeleton-container .css-1dk1h2u-MuiSkeleton-root::after {
+    background: linear-gradient(90deg, transparent, #fc991808, transparent);
+}
+
+.list-container .skeleton-container {
+    /* border: solid 1px green; */
+    display: flex;
+    flex-wrap: wrap;
+    float: left;
+}
