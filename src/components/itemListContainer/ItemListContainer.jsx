@@ -6,22 +6,26 @@ import Cards from '../cards/Cards'
 import Facebook from '../preloader/Preloader'
 // data from movesList.json
 import mockDB from '../../helpers/moviesList.json'
+// TODO: quitar cuando se agregen las routes
+import ItemDetsContainer from '../itemDetsContainer/ItemDetsContainer'
 
-
-const ItemListContainer = () =>{
+const ItemListContainer = ()=>{
     // ! separar lógica
     const [ showSkeleton, setShowSkeleton ] = useState(true);
 
-    const getMovies = () => {
-        return new Promise((resolve, reject) => {
-            return setTimeout( () => {
-
+    const getMovies = ()=>{
+        
+        return new Promise( (resolve, reject) => {
+            return setTimeout( ()=>{
                 resolve(mockDB.mockDB)
-            },3000)
+            }, 3000)
         })
     }
+    
 
-    useEffect( () => {
+    const [ movies, setMovies ] = useState([])
+
+    useEffect( ()=>{
         getMovies().then( (movie) => {
             // to remove skeleton
             setShowSkeleton(false)
@@ -32,7 +36,6 @@ const ItemListContainer = () =>{
         })
     })
 
-    const [ movies, setMovies ] = useState([])
     // ! final lógica
     
 
@@ -51,6 +54,7 @@ const ItemListContainer = () =>{
                     />
                 )
             })}
+            <ItemDetsContainer />
         </div>
     )
 }

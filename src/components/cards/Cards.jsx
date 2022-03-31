@@ -83,8 +83,8 @@ const Cards = (props) =>{
                     </CardContent>
                 </CardActionArea>
                 <CardActions className="card-actions">
-                    <Button onClick={ addToCart }size="small">
-                        Buy/See
+                    <Button onClick={ addToCart } size="small">
+                        Buy/Watch
                     </Button>
                     <ItemCount
                         addUnity={ addUnity }

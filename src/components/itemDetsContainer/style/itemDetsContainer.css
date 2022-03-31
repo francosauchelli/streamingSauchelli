@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ! agregar modal */
+.dets-container {
+    border: solid 1px #18022ccf;
+    width: 60%;
+    height: 90%;
+    /* ! que no tape los elementos - ver responsive */
+    -moz-box-shadow: 0 0 5px #f14a16;
+    -webkit-box-shadow: 0 0 5px #f14a16;
+    box-shadow: 0 0 50px #f14a16;
+    border-radius: 2px;
+}
