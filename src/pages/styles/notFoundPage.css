@@ -1,0 +1,16 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+.error-img-container {
+    width: 60%;
+    height: 60%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.error-img-container > a > img {
+    border-radius: 15px;
+}

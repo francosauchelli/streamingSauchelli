@@ -13,7 +13,11 @@ const ItemCount = (props) => {
     return(
         <div className="counter-container">
             <div className="remove-button-container">
-                <Button onClick={ removeUnity } className="remove-button">
+                <Button onClick={ removeUnity } 
+                    className="remove-button"
+                    // to disable the button when it's value is 1
+                    disabled={ count===1 ? true : false }
+                    >
                     <StarIcon className="star-button" />
                     <p>-</p>
                 </Button>

@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 // components
 import ItemDetail from '../itemDetail/ItemDetail'
+// Material-ui
+import LinearProgress from '@mui/material/LinearProgress';
 // styles
 import './style/itemDetsContainer.css'
 // data form movielist.json
-import mockDB from '../../helpers/moviesList.json'
+import mockDB from '../../data/moviesList.json'
+
 
 const ItemDetsContainer = ()=>{
 
-    const getMovie = ()=>{
+    const getDetail = ()=>{
 
         return new Promise ( (resolve, reject) => {
             return setTimeout( ()=>{
@@ -16,42 +20,41 @@ const ItemDetsContainer = ()=>{
             }, 2000)
         })
     }
+    const [ movieDetail, setMovieDetail ] = useState( [] )
 
-    const [ movie, setMovie ] = useState([])
-    const [ loading, setLoading ] = useState(false);
+    const [ loading, setLoading ] = useState( true );
+
+    const { id } = useParams();
 
     useEffect( ()=>{
-        getMovie().then( ( movieList ) => {
-            setMovie( movieList[0] )
-            setLoading(true);
+
+        getDetail().then( ( movieList ) => {
+        
+            movieList.map( ( movie ) => {
+                if( movie.id === id ) {
+                    setMovieDetail( movie )
+                }
+            })
+            setLoading( false );
+
         })
-    })
-
-
-    const { title, 
-            img, 
-            genre, 
-            type, 
-            duration,
-            unitPrice
-        } = movie
+    }, [])
 
     return (
-        <>
-            {loading ? (
-                <div className='dets-container' >
-                    <ItemDetail 
-                        title={ title }
-                        image={ `./assets/${ img }` }
-                        genre= { genre }
-                        type={ type }
-                        duration={ duration }
-                        unitPrice= { unitPrice }
-                    />
-                </div>) 
-            : (<></>)
+        <div className='dets-container' >
+            { !loading ? (
+                <ItemDetail 
+                    title={ movieDetail.title }
+                    image={ `/assets/${ movieDetail.img }` }
+                    genre= { movieDetail.genre }
+                    type={ movieDetail.type }
+                    duration={ movieDetail.duration }
+                    unitPrice= { movieDetail.unitPrice }
+                />
+                ) 
+                : ( <LinearProgress className='linear-loader' />)
             }
-        </>
+        </div>
     )
 }   
 

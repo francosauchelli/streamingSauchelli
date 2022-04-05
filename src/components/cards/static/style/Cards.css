@@ -17,7 +17,8 @@
     box-shadow: 3px 3px 4px #f14a16;
 }
 
-.item-container > div {
+.item-container > div,
+.item-card > a {
     background-color: #18022ccf;
     color: #F14A16;
 }

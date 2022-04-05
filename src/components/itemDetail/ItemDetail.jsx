@@ -5,8 +5,8 @@ import { Card,
     CardMedia,
     CardContent,
     Typography,
-    CardActions,
-    Button} from '@mui/material';
+    CardActions
+    } from '@mui/material';
 // styles
 import './style/itemDetail.css'
 
@@ -25,7 +25,7 @@ const ItemDetail = (props)=>{
                 <CardActionArea className="det-media">
                     <CardMedia
                         className='det-image'
-                        component="img"
+                        component='img'
                         height="140"
                         image={ image }
                         alt="movie Img"
@@ -37,7 +37,7 @@ const ItemDetail = (props)=>{
                             </Typography>
                             {/* add div as button to avoid React's conflict */}
                             <div className='button-icon' >
-                                    Buy/Watch
+                                    Buy / Watch
                             </div>
                         </div>
                         <div className='det-content-sub'>
@@ -65,7 +65,7 @@ const ItemDetail = (props)=>{
                                 Unit
                             </Typography>
                             <Typography variant="body2" >
-                                ${ unitPrice }/Day-Reprod.
+                                ${ unitPrice }/Reprod.
                             </Typography>
                         </div>
                         <div>
@@ -73,7 +73,7 @@ const ItemDetail = (props)=>{
                                 Plan
                             </Typography>
                             <Typography variant="body2" >
-                                $3.64/Month 
+                                $3,64/Month 
                             </Typography>
                         </div>
                     </div>
