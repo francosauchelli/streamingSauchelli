@@ -1,3 +1,8 @@
+Show the project functionality
+
+ ![image](https://github.com/francosauchelli/streamingSauchelli/blob/main/proyectgif/screen-capture.gif)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
