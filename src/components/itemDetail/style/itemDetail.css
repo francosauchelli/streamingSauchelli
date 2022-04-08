@@ -57,6 +57,11 @@
 
 }
 
+.det-item-count {
+    display: flex;
+    align-items: flex-end;
+}
+
 .det-image {
     object-fit: cover;
     width: 100%;

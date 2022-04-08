@@ -7,11 +7,37 @@ import Button from '@mui/material/Button';
 // local files
 import Cards from '../cards/Cards'
 
-const ItemCount = (props) => {
-    const { addUnity, removeUnity, count } = props
+const ItemCount = ( props ) => {
+
+    const { action } = props;
+
+    // counter model
+    const [ count, setCount ] = useState(1)
+
+    const addUnity = ( e )=> {
+
+        if(count < 4 ){
+            setCount( count + 1 );
+        }
+
+        action( count );
+    }
+    const removeUnity = ( e ) => {
+
+        setCount( count - 1 );
+        
+        action( count );
+    }
+
+    const handleClick = ( e ) => {
+        e.preventDefault()
+    }
 
     return(
-        <div className="counter-container">
+        <div 
+            className="counter-container"
+            onClick={ handleClick } 
+        >
             <div className="remove-button-container">
                 <Button onClick={ removeUnity } 
                     className="remove-button"

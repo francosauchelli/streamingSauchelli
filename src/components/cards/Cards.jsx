@@ -15,41 +15,33 @@ import ItemCount from '../itemCount/ItemCount'
 
 const Cards = ( props ) =>{
     // ! pasar lógica a otro archivo
-    // counter model
-    const [ count, setCount ] = useState(1)
-
-    const addUnity = ()=> {
-        if(count < 4 ){
-            setCount( count + 1 );
-        }
-    }
-
-    const removeUnity = () => {
-        setCount( count - 1 );
-    }
-
-    // add button
-    const [ add, setAdd ] = useState()
 
     const addToCart = () => {
-        const currentLimitOrder = 3;
-
-        let message = `${ count } days of ${ title }'s ${ genre }\n`
-        message += `had been added to cart.`
+        console.log( "Click, buy button" )
         
-        let limitMessage = `Sorry, currently the limit order per movie`
-        limitMessage += ` is ${ currentLimitOrder } days.`
+    //     const currentLimitOrder = 3;
 
-        if(count>0 && count<4){
-            alert(message);
-        } 
-        else if (count>3){
-            alert(limitMessage)
-        }
-        else{
-            alert(`You must add at least one day`)
-        }
+        // let message = `${ count } days of ${ title }'s ${ genre }\n`
+        // message += `had been added to cart.`
+        
+        // let limitMessage = `Sorry, currently the limit order per movie`
+        // limitMessage += ` is ${ currentLimitOrder } days.`
+
+        // if(count>0 && count<4){
+        //     alert(message);
+        // } 
+        // else if (count>3){
+        //     alert(limitMessage)
+        // }
+        // else{
+        //     alert(`You must add at least one day`)
+        // // }
     };
+    const [ cardCounter, setCardCounter ] = useState( [] );
+
+    const settingCounterCard = ( count ) => {
+        setCardCounter( count )
+    }
 
     // ! fin lógica
  
@@ -85,13 +77,9 @@ const Cards = ( props ) =>{
                 </Link>
                 <CardActions className="card-actions">
                     <Button onClick={ addToCart } size="small">
-                        Buy/Watch
+                        Buy / Watch
                     </Button>
-                    <ItemCount
-                        addUnity={ addUnity }
-                        removeUnity={ removeUnity }
-                        count={ count }
-                    />
+                    <ItemCount action={ settingCounterCard } />
                 </CardActions>
             </Card>
         </div>

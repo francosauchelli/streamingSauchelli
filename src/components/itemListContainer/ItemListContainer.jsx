@@ -65,7 +65,6 @@ const ItemListContainer = ()=>{
             <Facebook  loading={ showSkeleton } />
             {movies.map( (movie) => {
                 const {id, img, title, genre, type, duration } = movie;
-                console.log(id)
 
                 return(
                     !showSkeleton ? (

@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+.cart-page-container {
+    width: 60%;
+    height: 60%;
+    margin-top: auto;
+    margin-bottom: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.cart-page-container > a > img {
+    border-radius: 15px;
+    width: 100%;
+}

@@ -7,6 +7,7 @@ import NavBar from './components/navbar/NavBar'
 import Home from './pages/Home'
 import DetailPage from './pages/Detail'
 import NotFoundPage from './pages/NotFoundPage'
+import CartPage from './pages/CartPage';
 // Material-ui
 import { LinearProgress } from '@mui/material'
 
@@ -20,6 +21,7 @@ function App() {
             <Route path='/' element={ <Home /> } />
             <Route path='/:type' element={ <Home /> } />
             <Route path='/:type/:id' element={ <DetailPage /> } />
+            <Route path='/cartpage' element={ <CartPage /> } />
             <Route path='*' element={ <NotFoundPage /> } />
           </Routes>
         </div>

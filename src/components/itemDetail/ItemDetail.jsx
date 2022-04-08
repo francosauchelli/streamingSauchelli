@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+// local files
+import ItemCount from '../itemCount/ItemCount'
 // Material-ui
 import { Card,
     CardActionArea,
@@ -19,10 +22,19 @@ const ItemDetail = (props)=>{
             unitPrice
         } = props;
 
+    const [ detailCounter, setDetailCounter ] = useState( [] );
+
+    const settingCounterDet = ( count ) => {
+        setDetailCounter( count );
+    }
+
     return (
         <div className="item-det-container" >
             <Card className="det-card" sx={{ maxWidth: 345 }}>
-                <CardActionArea className="det-media">
+                <CardActionArea 
+                    className="det-media"
+                    component={ Link } to={ '/cartpage' }
+                >
                     <CardMedia
                         className='det-image'
                         component='img'
@@ -39,6 +51,9 @@ const ItemDetail = (props)=>{
                             <div className='button-icon' >
                                     Buy / Watch
                             </div>
+                        </div>
+                        <div className='det-item-count'>
+                            <ItemCount action={ settingCounterDet } />
                         </div>
                         <div className='det-content-sub'>
                             <Typography variant="body2" >
