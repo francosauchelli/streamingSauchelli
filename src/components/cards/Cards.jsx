@@ -1,7 +1,7 @@
 import React, { useState, 
                 useContext,
                 useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 // style
 import './static/style/Cards.css'
 // Material-ui 
@@ -24,9 +24,17 @@ const Cards = ( props ) =>{
     const product = props;
     const addToCart = ( ) => {
         addProductsToCart( cardCounter, product );
+        setEnableAdding( false );
     };
 
     // counter params
+    const [ enableAdding, setEnableAdding ] = useState( true );
+
+    const navigate = useNavigate();
+    const navigateToCart = () => {
+        navigate( '/cartpage');
+    }
+
     const [ cardCounter, setCardCounter ] = useState( 1 );
 
     const addUnity = ()=> {
@@ -73,14 +81,24 @@ const Cards = ( props ) =>{
                     </CardActionArea>
                 </Link>
                 <CardActions className="card-actions">
-                    <Button onClick={ addToCart } size="small">
-                        { engLang ? ( 'Buy / Watch' ) : ( 'Comprar / Ver' ) }
+                    <Button onClick={ enableAdding ?
+                                        ( addToCart ) 
+                                        : ( navigateToCart ) }
+                            size="small">
+                        {   enableAdding ? 
+                                ( engLang ? ( 'Buy / Watch' ) : ( 'Comprar / Ver' ) )
+                                : ( engLang ? ( 'Checkout' ) : ( 'Finalizar Compra' ) )
+                        }
                     </Button>
-                    <ItemCount 
-                        actionAdd={ addUnity }
-                        actionRemove={ removeUnity }
-                        counter={ cardCounter }
-                    />
+                    {   enableAdding && 
+                            (
+                                <ItemCount 
+                                actionAdd={ addUnity }
+                                actionRemove={ removeUnity }
+                                counter={ cardCounter }
+                                />
+                            )
+                    }
                 </CardActions>
             </Card>
         </div>
