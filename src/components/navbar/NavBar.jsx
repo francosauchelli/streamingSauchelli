@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from 'react-router-dom'
 // FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -10,9 +10,13 @@ import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Box from '@mui/material/Box';
 // local files
-import CartWidget from '../cartWidget/CartWidget'
+import CartWidget from '../cartWidget/CartWidget';
+import LangSwitch from '../langSwitch/LangSwitch';
+import LangContext from '../../context/LangContext';
 
 function NavBar(){
+    const { engLang } = useContext( LangContext );
+
     return (
         // jsx
         <header className="main-header">
@@ -27,12 +31,12 @@ function NavBar(){
                     <ButtonGroup variant="text" aria-label="text button group" className="buttons-group">
                         <Link to={ '/' }>
                             <Button className='single-button-group'>
-                                    Home
+                                    { engLang ? ( "Home" ) : ( "Inicio" ) }
                             </Button>
                         </Link>
                         <Link to={ '/movie' }>
                             <Button className='single-button-group'>
-                                Movies
+                                { engLang ? ( "Movies" ) : ( "Películas" ) }
                             </Button>
                         </Link>
                         <Link to={ '/serie' }>
@@ -42,14 +46,21 @@ function NavBar(){
                         </Link>
                         <Link to={ '/mylist' }>
                             <Button className='last-single-button-group'>
-                                My List
+                                { engLang ? ( "My List" ) : ( "Mi Lista" ) }
                             </Button>
                         </Link>
                     </ButtonGroup>
                 </Box>
                 <CartWidget />
                 <div>
-                    <Button variant="text" size="small">Login</Button>
+                    <div>
+                        <div className='switch-container' >
+                            <LangSwitch />
+                        </div>
+                        <Button variant="text" size="small">
+                            { engLang ? ( "Login" ) : ( "Ingresar" ) }
+                        </Button>
+                    </div>
                 </div>
             </div>
         </header>

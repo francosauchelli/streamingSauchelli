@@ -1,0 +1,23 @@
+
+/* the style is defined according to the language */
+.lang-container-spanish span.MuiSwitch-thumb.css-jsexje-MuiSwitch-thumb {
+    background-image: url('../../../../public/assets/lang-flags/spanish.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: auto;
+}
+
+.lang-container-english span.MuiSwitch-thumb.css-jsexje-MuiSwitch-thumb {
+    background-image: url('../../../../public/assets/lang-flags/usa.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: auto;
+}
+
+.lang-container-english span.MuiSwitch-track.css-1yjjitx-MuiSwitch-track {
+    background-color: #F14A16;
+}
+
+.lang-container-spanish span.MuiSwitch-track.css-1yjjitx-MuiSwitch-track {
+    background-color: #FC9918;
+}

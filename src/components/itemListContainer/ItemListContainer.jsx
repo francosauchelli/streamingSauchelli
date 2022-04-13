@@ -1,39 +1,38 @@
-import React, { useEffect, useState } from 'react'
+import React, { 
+        useEffect,
+        useState,
+        useContext } from 'react'
 import { useParams } from 'react-router-dom';
 // style
 import './style/itemListContainer.css'
 // local file
 import Cards from '../cards/Cards'
 import Facebook from '../preloader/Preloader'
+import LangContext from '../../context/LangContext';
 // data from movesList.json
-import mockDB from '../../data/moviesList.json'
+import localDataBase from '../../data/moviesList.json'
 
 const ItemListContainer = ()=>{
-    // ! separar lógica
     const [ showSkeleton, setShowSkeleton ] = useState( true );
 
-    const getMovies = ()=>{
-        
-        return new Promise( (resolve, reject) => {
-            return setTimeout( () => {
-                resolve(mockDB.mockDB)
-            }, 3000)
-        })
-    }
+    // for language selection
+    const { engLang } = useContext( LangContext );
 
     const [ movies, setMovies ] = useState( [] )
 
     const { type } = useParams();
 
-    useEffect( ()=>{
-        setMovies( [] )
-        setShowSkeleton( true );
 
+    useEffect( (  )=>{
+            setShowSkeleton( true );
+            setMovies( [] )
+
+        // retrieve and filter the titles
         getMovies().then( ( response ) => {
             // to remove skeleton
-            setShowSkeleton( false )
+            setShowSkeleton( false );
             // to get movies data
-            setMovies( response )
+            setMovies( response );
             // to filter by type
             if( type ) {
                 filterByType( response, type);
@@ -41,15 +40,36 @@ const ItemListContainer = ()=>{
         }).finally( () => {
             console.log("MockDB downloaded.")
         })
-    }, [ type ])
+    }, [ type, engLang ] )
 
+
+    const getMovies = ()=>{
+        const url = engLang ?
+                ( localDataBase[0].mockDB[0].mockEnglish )
+                : ( localDataBase[0].mockDB[0].mockSpanish );
+        
+        return new Promise( (resolve, reject) => {
+            return setTimeout( () => {
+                resolve( url )
+            }, 3000)
+        })
+    }
+    
 
     const filterByType = ( moviesList, type ) => {
         let arrayMovies = []
 
         moviesList.map( (movie)=> {
-            const movieType = movie.type.toLowerCase();
+            let movieType = '';
 
+            // add condition. If spanish is selected, "película" and "movie" should match
+            if( movie.type==='Película' ) {
+                movieType = 'movie';
+            } else {
+                movieType = movie.type.toLowerCase();
+            }
+
+            // filter by type
             if( movieType === type) {
                 arrayMovies = [ ...arrayMovies, movie]
             }
@@ -57,8 +77,6 @@ const ItemListContainer = ()=>{
         return setMovies( arrayMovies )
     }
 
-    // ! final lógica
-    
 
     return(
         <div className="list-container">

@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, 
+                useContext,
+                useEffect } from 'react';
 import { Link } from 'react-router-dom';
 // style
 import './static/style/Cards.css'
@@ -11,40 +13,33 @@ import { Card,
     CardActions,
     Button} from '@mui/material';
 // local files
-import ItemCount from '../itemCount/ItemCount'
+import ItemCount from '../itemCount/ItemCount';
+import LangContext from '../../context/LangContext';
+import CartContext from '../../context/CartContext';
 
 const Cards = ( props ) =>{
-    // ! pasar lógica a otro archivo
+    const { engLang } = useContext( LangContext );
+    const { addProductsToCart } = useContext( CartContext );
 
-    const addToCart = () => {
-        console.log( "Click, buy button" )
-        
-    //     const currentLimitOrder = 3;
-
-        // let message = `${ count } days of ${ title }'s ${ genre }\n`
-        // message += `had been added to cart.`
-        
-        // let limitMessage = `Sorry, currently the limit order per movie`
-        // limitMessage += ` is ${ currentLimitOrder } days.`
-
-        // if(count>0 && count<4){
-        //     alert(message);
-        // } 
-        // else if (count>3){
-        //     alert(limitMessage)
-        // }
-        // else{
-        //     alert(`You must add at least one day`)
-        // // }
+    const product = props;
+    const addToCart = ( ) => {
+        addProductsToCart( cardCounter, product );
     };
-    const [ cardCounter, setCardCounter ] = useState( [] );
 
-    const settingCounterCard = ( count ) => {
-        setCardCounter( count )
+    // counter params
+    const [ cardCounter, setCardCounter ] = useState( 1 );
+
+    const addUnity = ()=> {
+        if(cardCounter < 4 ){
+            setCardCounter( cardCounter + 1 );
+        }
     }
 
-    // ! fin lógica
- 
+    const removeUnity = () => {
+        setCardCounter( cardCounter - 1 );
+    }
+    
+
     const { id, img, title, genre, duration, type } = props;
     let movieType = type.toLowerCase();
 
@@ -70,16 +65,22 @@ const Cards = ( props ) =>{
                                 { type }
                             </Typography>
                             <Typography variant="body2" >
-                                Duration: { duration }
+                                { engLang ? 
+                                    ( `Duration: ${ duration }` ) 
+                                    : ( `Duración: ${ duration }` ) }
                             </Typography>
                         </CardContent>
                     </CardActionArea>
                 </Link>
                 <CardActions className="card-actions">
                     <Button onClick={ addToCart } size="small">
-                        Buy / Watch
+                        { engLang ? ( 'Buy / Watch' ) : ( 'Comprar / Ver' ) }
                     </Button>
-                    <ItemCount action={ settingCounterCard } />
+                    <ItemCount 
+                        actionAdd={ addUnity }
+                        actionRemove={ removeUnity }
+                        counter={ cardCounter }
+                    />
                 </CardActions>
             </Card>
         </div>

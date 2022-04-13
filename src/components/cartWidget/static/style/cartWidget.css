@@ -24,6 +24,11 @@
     z-index: -1;
 }
 
+.cart-badge > .cart-icon:hover {
+    transform: scale(2);
+    color: green;
+}
+
 .cart-badge > span {
     background-color: #f44336;
 }
