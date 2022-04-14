@@ -7,11 +7,10 @@ import NavBar from './components/navbar/NavBar';
 import Home from './pages/Home';
 import DetailPage from './pages/Detail';
 import NotFoundPage from './pages/NotFoundPage';
-import CartPage from './pages/CartPage';
+import CartPage from './pages/Cart';
+import CartDetail from './components/cartDetail/CartDetail';
 import { CartProvider } from './context/CartContext';
 import { LangProvider } from './context/LangContext';
-// Material-ui
-import { LinearProgress } from '@mui/material';
 
 function App() {
   return (
@@ -25,7 +24,7 @@ function App() {
                 <Route path='/' element={ <Home /> } />
                 <Route path='/:type' element={ <Home /> } />
                 <Route path='/:type/:id' element={ <DetailPage /> } />
-                <Route path='/cartpage' element={ <CartPage /> } />
+                <Route path='/cart' element={ <CartPage /> } />
                 <Route path='*' element={ <NotFoundPage /> } />
               </Routes>
             </div>

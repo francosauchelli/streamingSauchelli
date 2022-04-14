@@ -32,7 +32,7 @@ const Cards = ( props ) =>{
 
     const navigate = useNavigate();
     const navigateToCart = () => {
-        navigate( '/cartpage');
+        navigate( '/cart' );
     }
 
     const [ cardCounter, setCardCounter ] = useState( 1 );

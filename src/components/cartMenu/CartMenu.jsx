@@ -1,30 +1,32 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 // Material-ui
-import Box from '@mui/material/Box';
-import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Tooltip from '@mui/material/Tooltip';
-import PersonAdd from '@mui/icons-material/PersonAdd';
-import Settings from '@mui/icons-material/Settings';
-import Logout from '@mui/icons-material/Logout';
+// local files
+import LangContext from '../../context/LangContext';
 // style
 import './style/cartMenu.css';
 
 const CartMenu = ( props )=> {
+    const { engLang } = useContext( LangContext );
+
     const { openMenu, 
-            action,
-            cartProducts
+            actionOpen,
+            cartProducts,
+            actionRemove
             } = props;
 
-
     const open = openMenu ? ( true ) : ( false );
+
+    const removeItem = ( e, product ) => {
+        e.stopPropagation();
+        actionRemove( product );
+    }
 
     return (
     <React.Fragment>
@@ -34,8 +36,8 @@ const CartMenu = ( props )=> {
         anchorEl={ openMenu }
         id="account-menu"
         open={ open }
-        onClose={ action }
-        onClick={ action }
+        onClose={ actionOpen }
+        onClick={ actionOpen }
         PaperProps={{
             elevation: 0,
             sx: {
@@ -79,16 +81,26 @@ const CartMenu = ( props )=> {
                     </div>
                     <div className='cart-qty' >
                         {/* Qty */}
-                        <p>{ product[0] }</p>
+                        <p>{ `x ${product[0]} u.` }</p>
                     </div>
-                    <div className='cart-remove-btn' >
+                    <IconButton 
+                        className='cart-remove-btn'
+                        onClick={ (e) => removeItem( e, product ) }
+                    >
                         <HighlightOffIcon />
-                    </div>
+                    </IconButton>
                 </MenuItem>
                 )
             })}
                 <Divider className='cart-divider' />
-                <ShoppingCartCheckoutIcon className='cart-go-pay' />
+                <div className='cart-go-pay' >
+                    <Link to={ '/cart' }>
+                        <button >
+                            <p>{ engLang ? ( 'Checkout' ) : ( 'Finalizar Compra' ) }</p>
+                            <ShoppingCartCheckoutIcon  />
+                        </button>
+                    </Link>
+                </div>
         </Menu>
     </React.Fragment>
     )

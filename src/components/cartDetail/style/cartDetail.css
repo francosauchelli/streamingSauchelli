@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.cart-detail-container {
+    width: 900px;
+    height: 150px;
+    background-color: #0a0a0aa2;
+    /* background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #280449 4px ), repeating-linear-gradient( #cc421855, #280449 ); */
+    margin: 20px;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    -moz-box-shadow: 0 0 5px #f14a16;
+    -webkit-box-shadow: 0 0 5px #f14a16;
+    box-shadow: 0 0 5px #f14a16;
+    border-radius: 3px;
+
+}
+
+
+
+.cart-detail-img {
+    /* border: 2px solid red; */
+    width: 40%;
+    height: 80%;
+    opacity: inherit;
+    margin: 0 10px;
+    align-items: center;
+    -moz-box-shadow: 0 0 5px #f14a16;
+    -webkit-box-shadow: 0 0 5px #f14a16;
+    box-shadow: 0 0 2px #f14a16;
+    border-radius: 3px;
+
+}
+
+.cart-detail-img > img {
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    opacity: inherit;
+    /* border: 2px solid orange; */
+    border-radius: 3px;
+    background-color: transparent;
+
+}
+
+.cart-title-container {
+    display:flex; 
+    flex-direction: column;
+    width: 250px;
+}
+
+.cart-detail-title {
+    /* border: 2px solid blue; */
+    color: #F14A16;
+}
+
+.cart-detail-type {
+    /* border: 2px solid blue; */
+    color: #F14A16;
+
+}
+
+.cart-price-container {
+    display: flex;
+    flex-direction: row;
+    width: 200px;
+    /* border: 2px solid crimson; */
+    margin: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.cart-detail-qty {
+    /* border: 2px solid blue; */
+    color: #F14A16;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.cart-detail-price {
+    /* border: 2px solid blue; */
+    color: #F14A16;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+
+.cart-total-container {
+    /* border: 2px solid lightblue;     */
+    color: #F14A16;
+    display: flex;
+    justify-content: end;
+    padding: 0 20px;
+}
+
+.cart-error-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    color: #F14A16;
+    align-items: center;
+    font-family: Snell Roundhand, cursive;
+}
+
+.cart-error-message {
+    display: flex;
+    text-align: center;
+    width: 400px;
+    text-shadow: 0.5px 0px 2px #FC9918;
+}

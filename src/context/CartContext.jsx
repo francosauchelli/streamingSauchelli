@@ -20,10 +20,23 @@ const CartProvider = ( { children } ) => {
         }
     }
 
+    const removeProductFromCart = ( product ) => {
+        let productIndex = '';
+        productIndex = cartProducts.findIndex( ( prod ) => (
+            prod[1].id === product[1].id 
+        ) );
+
+        const newCartArray  = cartProducts.filter( (prod) => (
+                    prod[1].id !== product[1].id
+                ) )
+        setCartProducts( newCartArray );
+    }
+
     const dataContext = {
         changeSt,
         cartProducts,
-        addProductsToCart
+        addProductsToCart,
+        removeProductFromCart
     }
 
     return (

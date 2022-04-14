@@ -10,7 +10,7 @@ import CartMenu from '../cartMenu/CartMenu';
 import './static/style/cartWidget.css'
 
 const CartWidget = () => {
-    const { cartProducts, changeSt } = useContext( CartContext );
+    const { cartProducts, changeSt, removeProductFromCart } = useContext( CartContext );
     
     const [ cartAmount, setCartAmount ] = useState( 0 );
     
@@ -20,8 +20,10 @@ const CartWidget = () => {
             qtyProducts += each[0]
         })
 
+        cartProducts.length===0 && ( setOpenMenuState( null ) );
+
         setCartAmount( qtyProducts );
-    }, [ changeSt ] );
+    }, [ changeSt, cartProducts ] );
 
 
     const [ openMenuState , setOpenMenuState ] = useState( null );
@@ -48,7 +50,8 @@ const CartWidget = () => {
                 </Badge>
                 <CartMenu 
                     openMenu={ openMenuState }
-                    action={ openMenuCart } 
+                    actionOpen={ openMenuCart }
+                    actionRemove={ removeProductFromCart }
                     cartProducts={ cartProducts }
                 />
             </Button>

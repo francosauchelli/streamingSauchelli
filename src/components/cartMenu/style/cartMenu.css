@@ -10,25 +10,30 @@
     -webkit-box-shadow: 0 0 5px #f14a16;
     box-shadow: 0 0 10px #f14a16;
     border-radius: 2px;
-    width: 250px;
+    width: 300px;
     display: flex;
     flex-wrap: nowrap;
-    justify-content: center;
-    align-content: flex-start;
+}
+
+div > .css-aqqxug-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper:before {
+    background-color: #09040fc9;
+    /* -moz-box-shadow: 0 0 5px #f14a16;
+    -webkit-box-shadow: 0 0 5px #f14a16; */
+    box-shadow: -6px -6px 12px #f14a16;
 }
 
 #account-menu li {
     display: flex;
     flex-wrap: nowrap;
-    justify-content: center;
+    justify-content: space-between;
     /* align-content: flex-start; */
     align-items: center;
+    margin-right: 10px;
 }
 
 #account-menu li div {
     margin: 10px;
 }
-
 
 .cart-img {
     /* border: 2px solid red; */
@@ -45,11 +50,13 @@
     width: 100%;
     height: 100%;
     margin-left: 0px;
+    object-fit: contain;
 }
 
 .cart-title {
     /* border: 2px solid red; */
     color: #f14a16;
+    font-weight:bold ;
 }
 
 .cart-qty {
@@ -58,23 +65,46 @@
 
 }
 
-.cart-remove-btn {
+.cart-remove-btn * {
     color: #f14a16;
 }
 
 .cart-divider {
-    /* border: 2px solid red; */
-    background-color: #942d0d;
+    display: flex;
+    margin-left: 20px;
 
+    width: 70%;
+    border: 2px solid blue;
+    background-color: #942d0d;
 }
 
-.cart-go-pay {
+.cart-go-pay,
+.cart-go-pay > button {
+    /* border: 2px solid red; */
+    background-color: transparent;
+    border-style: none;
+    width: 90%;
     display: flex;
+    margin: 5px;
+    box-sizing: border-box;
     flex-wrap: nowrap;
+    align-items: center;
+    justify-content:center;
+    align-content: center;
+}
 
+.cart-go-pay > button:hover {
+    cursor: pointer;
+}
+
+.cart-go-pay * {
+    width: auto;
+    width: fit-content;
     /* border: 2px solid red; */
     color: #f14a16;
-    margin-right: auto;
-    margin-left: 40%;
-
+    display: inline-block;
+    margin: 0 10px;
+    font-weight: bolder;
+    background-color: transparent;
+    border-style: none;
 }

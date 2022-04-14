@@ -82,7 +82,9 @@ const ItemListContainer = ()=>{
         <div className="list-container">
             <Facebook  loading={ showSkeleton } />
             {movies.map( (movie) => {
-                const {id, img, title, genre, type, duration } = movie;
+                const {id, img, title, 
+                    genre, type, duration,
+                    unitPrice } = movie;
 
                 return(
                     !showSkeleton ? (
@@ -93,6 +95,7 @@ const ItemListContainer = ()=>{
                             genre={ genre }
                             type={ type }
                             duration={ duration }
+                            unitPrice={ unitPrice }
                         /> 
                     )
                     : ( <></> )
