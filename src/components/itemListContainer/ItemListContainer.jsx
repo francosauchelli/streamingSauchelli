@@ -11,6 +11,9 @@ import Facebook from '../preloader/Preloader'
 import LangContext from '../../context/LangContext';
 // data from movesList.json
 import localDataBase from '../../data/moviesList.json'
+// Firebase: data & components
+import firebaseDB from '../../data/firebase';
+import { collection, getDocs } from 'firebase/firestore';
 
 const ItemListContainer = ()=>{
     const [ showSkeleton, setShowSkeleton ] = useState( true );
@@ -23,50 +26,35 @@ const ItemListContainer = ()=>{
     const { type } = useParams();
 
 
-    useEffect( (  )=>{
-            setShowSkeleton( true );
-            setMovies( [] )
-
-        // retrieve and filter the titles
-        getMovies().then( ( response ) => {
-            // to remove skeleton
-            setShowSkeleton( false );
-            // to get movies data
-            setMovies( response );
-            // to filter by type
-            if( type ) {
-                filterByType( response, type);
-            }
-        }).finally( () => {
-            console.log("MockDB downloaded.")
-        })
-    }, [ type, engLang ] )
-
-
-    const getMovies = ()=>{
-        const url = engLang ?
-                ( localDataBase[0].mockDB[0].mockEnglish )
-                : ( localDataBase[0].mockDB[0].mockSpanish );
+    const getMovies = async () => {
+        const itemsCollection = collection( firebaseDB, 'mockProducts' );
+        const itemsSnapShot = await getDocs( itemsCollection );
         
-        return new Promise( (resolve, reject) => {
-            return setTimeout( () => {
-                resolve( url )
-            }, 3000)
-        })
+        const itemsList = itemsSnapShot.docs.map( (el) => {
+            let singleTitle = el.data();
+            singleTitle.id = el.id;
+
+            return singleTitle;
+        });
+
+        return itemsList;
     }
     
 
     const filterByType = ( moviesList, type ) => {
         let arrayMovies = []
 
-        moviesList.map( (movie)=> {
-            let movieType = '';
+        moviesList.map( (movie) => {
+            let movieType = ( Array.isArray( movie.type ) ?
+                                ( engLang ? ( movie.type[0] ) : ( movie.type[1] ) )
+                                : ( movie.type )
+                            );
 
             // add condition. If spanish is selected, "película" and "movie" should match
-            if( movie.type==='Película' ) {
+            if( movieType==='Película' ) {
                 movieType = 'movie';
             } else {
-                movieType = movie.type.toLowerCase();
+                movieType = movieType.toLowerCase();
             }
 
             // filter by type
@@ -78,23 +66,70 @@ const ItemListContainer = ()=>{
     }
 
 
+    useEffect( (  )=>{
+        setShowSkeleton( true );
+        setMovies( [] );
+
+    // retrieve and filter the titles
+    getMovies().then( ( response ) => {
+            // to remove skeleton
+            setShowSkeleton( false );
+            // to get movies data
+            setMovies( response );
+            // to filter by type
+            if( type ) {
+                filterByType( response, type);
+            }
+        }).finally( () => {
+        console.log("MockDB downloaded.")
+        })
+    }, [ type, engLang ] )
+
+
     return(
         <div className="list-container">
             <Facebook  loading={ showSkeleton } />
             {movies.map( (movie) => {
-                const {id, img, title, 
-                    genre, type, duration,
-                    unitPrice } = movie;
+                const { 
+                    id,
+                    img,
+                    title, 
+                    genre,
+                    type,
+                    duration,
+                    unitPrice
+                } = movie;
+
 
                 return(
                     !showSkeleton ? (
                         <Cards key={ id }
                             id={ id }
                             img={ `./assets/${img}` }
-                            title={ title } 
-                            genre={ genre }
-                            type={ type }
-                            duration={ duration }
+                            title={ 
+                                // check the language only if it is an array
+                                Array.isArray( title ) ?
+                                    ( engLang ? (title[0]) : (title[1]) ) 
+                                        : ( title )
+                            } 
+                            genre={
+                                // check the language only if it is an array
+                                Array.isArray( genre ) ?
+                                    ( engLang ? (genre[0]) : (genre[1]) ) 
+                                    : ( genre )
+                            }
+                            type={ 
+                                // check the language only if it is an array
+                                Array.isArray( type ) ?
+                                    ( engLang ? (type[0]) : (type[1]) ) 
+                                    : ( type )
+                            }
+                            duration={ 
+                                // check the language only if it is an array
+                                Array.isArray( duration ) ?
+                                    ( engLang ? (duration[0]) : (duration[1]) ) 
+                                    : ( duration )
+                            }
                             unitPrice={ unitPrice }
                         /> 
                     )

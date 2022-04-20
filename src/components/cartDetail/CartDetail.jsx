@@ -18,12 +18,11 @@ const CartDetail = () => {
             const { unitPrice } = prod[1];
             const qty = parseInt(prod[0]);
             subTotal += qty * parseFloat(unitPrice);
-            console.log(subTotal)
+
             setTotal( subTotal.toFixed(2) );
         })
     }, [ cartProducts ] )
     
-
 
     return (
         <>
@@ -32,7 +31,7 @@ const CartDetail = () => {
                 { cartProducts.map( ( prod ) => {
                     const { id, img, title, type, unitPrice } = prod[1];
                     const qty = prod[0];
-                    console.log(prod)
+
                     return (
                         <div 
                             key={ id }

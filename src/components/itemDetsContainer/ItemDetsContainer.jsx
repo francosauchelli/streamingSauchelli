@@ -13,52 +13,68 @@ import './style/itemDetsContainer.css'
 import LangContext from '../../context/LangContext';
 // data form movielist.json
 import localDataBase from '../../data/moviesList.json'
+// Firebase: data & components
+import { doc, getDoc } from 'firebase/firestore';
+import firestoreDB from '../../data/firebase';
 
 
-const ItemDetsContainer = ()=>{
+const ItemDetsContainer = () => {
     const { engLang } = useContext( LangContext );
+    const { id } = useParams();
 
-    const getDetail = ()=>{
+    const getDetail = async () => {
+        const itemDoc = doc( firestoreDB, 'mockProducts', id );
+        const itemSnapShot = await getDoc( itemDoc );
 
-        const url = engLang ?
-                ( localDataBase[0].mockDB[0].mockEnglish )
-                : ( localDataBase[0].mockDB[0].mockSpanish )
-
-        return new Promise ( (resolve, reject) => {
-            return setTimeout( ()=>{
-                resolve( url );
-            }, 2000)
-        })
+        return itemSnapShot.data()
     }
+
+
     const [ movieDetail, setMovieDetail ] = useState( [] )
 
     const [ loading, setLoading ] = useState( true );
 
-    const { id } = useParams();
 
     useEffect( ()=>{
 
-        getDetail().then( ( movieList ) => {
-            console.log(movieList)
-            movieList.map( ( movie ) => {
-                if( movie.id === id ) {
-                    setMovieDetail( movie )
-                }
-            })
+        getDetail().then( ( movieResponse ) => {
+            setMovieDetail( movieResponse );
             setLoading( false );
-
         })
-    }, [])
+    }, [] );
+
+    const { img, title, genre, type, duration } = movieDetail
 
     return (
         <div className='dets-container' >
-            { !loading ? (
+            {
+            !loading ? (
                 <ItemDetail 
-                    title={ movieDetail.title }
-                    image={ `/assets/${ movieDetail.img }` }
-                    genre= { movieDetail.genre }
-                    type={ movieDetail.type }
-                    duration={ movieDetail.duration }
+                    title={ 
+                        // check the language only if it is an array
+                        Array.isArray( title ) ?
+                            ( engLang ? (title[0]) : (title[1]) ) 
+                                : ( title )
+                    }
+                    img={ `/assets/${ img }` }
+                    genre={
+                        // check the language only if it is an array
+                        Array.isArray( genre ) ?
+                            ( engLang ? (genre[0]) : (genre[1]) ) 
+                            : ( genre )
+                    }
+                    type={ 
+                        // check the language only if it is an array
+                        Array.isArray( type ) ?
+                            ( engLang ? (type[0]) : (type[1]) ) 
+                            : ( type )
+                    }
+                    duration={ 
+                        // check the language only if it is an array
+                        Array.isArray( duration ) ?
+                            ( engLang ? (duration[0]) : (duration[1]) ) 
+                            : ( duration )
+                    }
                     unitPrice= { movieDetail.unitPrice }
                 />
                 ) 
@@ -66,6 +82,7 @@ const ItemDetsContainer = ()=>{
             }
         </div>
     )
-}   
+}
+
 
 export default ItemDetsContainer;

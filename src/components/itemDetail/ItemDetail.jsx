@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState,
+                useEffect,
+                useContext } from 'react';
 import { Link } from 'react-router-dom';
 // local files
-import ItemCount from '../itemCount/ItemCount'
+import CartContext from '../../context/CartContext';
+import LangContext from '../../context/LangContext';
 // Material-ui
 import { Card,
     CardActionArea,
@@ -13,8 +16,16 @@ import { Card,
 // styles
 import './style/itemDetail.css'
 
-const ItemDetail = (props)=>{
-    const { image,
+const ItemDetail = ( props )=>{
+    const { engLang } = useContext( LangContext );
+    const { addProductsToCart } = useContext( CartContext );
+
+    const product = props;
+    const addToCart = ( ) => {
+        addProductsToCart( 1, product );
+    };
+
+    const { img,
             title, 
             genre, 
             type, 
@@ -22,24 +33,20 @@ const ItemDetail = (props)=>{
             unitPrice
         } = props;
 
-    const [ detailCounter, setDetailCounter ] = useState( [] );
-
-    const settingCounterDet = ( count ) => {
-        setDetailCounter( count );
-    }
 
     return (
         <div className="item-det-container" >
             <Card className="det-card" sx={{ maxWidth: 345 }}>
                 <CardActionArea 
                     className="det-media"
-                    component={ Link } to={ '/cartpage' }
+                    component={ Link } to={ '/cart' }
+                    onClick={ addToCart }
                 >
                     <CardMedia
                         className='det-image'
                         component='img'
                         height="140"
-                        image={ image }
+                        src={ img }
                         alt="movie Img"
                     />
                     <CardContent className="det-content">
@@ -53,7 +60,7 @@ const ItemDetail = (props)=>{
                             </div>
                         </div>
                         <div className='det-item-count'>
-                            <ItemCount action={ settingCounterDet } />
+                            {/* <ItemCount action={ settingCounterDet } /> */}
                         </div>
                         <div className='det-content-sub'>
                             <Typography variant="body2" >

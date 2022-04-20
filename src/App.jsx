@@ -12,6 +12,7 @@ import CartDetail from './components/cartDetail/CartDetail';
 import { CartProvider } from './context/CartContext';
 import { LangProvider } from './context/LangContext';
 
+
 function App() {
   return (
     <div className="App">
