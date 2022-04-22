@@ -36,7 +36,8 @@ const CartProvider = ( { children } ) => {
         changeSt,
         cartProducts,
         addProductsToCart,
-        removeProductFromCart
+        removeProductFromCart,
+        setCartProducts
     }
 
     return (

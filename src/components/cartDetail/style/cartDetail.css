@@ -115,3 +115,110 @@
     width: 400px;
     text-shadow: 0.5px 0px 2px #FC9918;
 }
+
+.cart-detail-buttons {
+    /* border: 1px solid green; */
+    display: flex;
+    justify-content: space-between;
+}
+.cart-detail-buttons a {
+    height: 0px;
+    width: 0px;
+}
+.cart-detail-buttons button {
+    border: 1px solid #FC9918;
+    background-color: transparent;
+    margin: 20px;
+    color: #FC9918;
+    padding: 10px 2px;
+    border-radius: 5px;
+    width: 130px;
+}
+
+.cart-detail-buttons button:hover {
+    background-color: #e9ac5c;
+    color: #f14a16;
+    font-weight: bold;
+    -moz-box-shadow: 0 0 5px #f14a16;
+    -webkit-box-shadow: 0 0 5px #f14a16;
+    box-shadow: 0 0 15px #f14a16;
+}
+
+div .css-1t1j96h-MuiPaper-root-MuiDialog-paper {
+    background-color: transparent;
+}
+
+.css-1t1j96h-MuiPaper-root-MuiDialog-paper  .conten-dialog-container {
+    background-color: #0d0118f6;
+    color: #f14a16;
+}
+
+.css-1t1j96h-MuiPaper-root-MuiDialog-paper  .modal-buttons-container {
+    background-color: #0d0118ef;
+    color: #f14a16;
+}
+
+.css-1t1j96h-MuiPaper-root-MuiDialog-paper  h2 {
+    background-color: transparent;
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+}
+
+.css-1t1j96h-MuiPaper-root-MuiDialog-paper  div {
+    background-color: transparent;
+}
+
+.css-1t1j96h-MuiPaper-root-MuiDialog-paper  label {
+    background-color: transparent;
+    color: #e9ac5c;
+}
+
+div .css-1t1j96h-MuiPaper-root-MuiDialog-paper > label::after {
+    background-color: transparent;
+}
+
+div .css-1c2i806-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+    color: #f14a16;
+}
+
+div > .css-ghsjzk-MuiInputBase-root-MuiInput-root:after {
+    border-bottom: 2px solid #f14a16;
+}
+
+div > .css-ghsjzk-MuiInputBase-root-MuiInput-root::before {
+    border-bottom: 2px solid #e9ac5c;
+}
+
+div .css-1x51dt5-MuiInputBase-input-MuiInput-input {
+    color: #f74c19;
+    font-weight: 200;
+}
+
+
+.css-1t1j96h-MuiPaper-root-MuiDialog-paper  button {
+    border: 1px solid #FC9918;
+    background-color: transparent;
+    color: #FC9918;
+    stop-opacity:unset;
+}
+
+.css-1t1j96h-MuiPaper-root-MuiDialog-paper  button:hover {
+    background-color: #e9ac5c;
+    color: #f14a16;
+    font-weight: bold;
+    -moz-box-shadow: 0 0 5px #f14a16;
+    -webkit-box-shadow: 0 0 5px #f14a16;
+    box-shadow: 0 0 15px #f14a16;
+}
+
+
+
+.order-commit-container div {
+    background-color: #0d0118ef;
+    color: #f14a16;
+}
+
+div .css-1t1j96h-MuiPaper-root-MuiDialog-paper {
+    overflow: hidden;
+    overflow-y: hidden;
+    color: #f14a16;
+}
