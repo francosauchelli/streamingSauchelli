@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 // Material-ui
 import Menu from '@mui/material/Menu';
@@ -30,8 +30,6 @@ const CartMenu = ( props )=> {
 
     return (
     <React.Fragment>
-        {/* <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-        </Box> */}
         <Menu
         anchorEl={ openMenu }
         id="account-menu"
@@ -68,11 +66,12 @@ const CartMenu = ( props )=> {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
         >
             { cartProducts.map( (product) => {
-
                 const { id, title, img } = product[1];
 
                 return (
-                <MenuItem key={ id } >
+                <MenuItem key={ id }
+                    className='cart-menu-item'
+                >
                     <div className='cart-img' >
                         <img src={ img } alt="img" />
                     </div>
@@ -93,14 +92,12 @@ const CartMenu = ( props )=> {
                 )
             })}
                 <Divider className='cart-divider' />
-                <div className='cart-go-pay' >
-                    <Link to={ '/cart' }>
-                        <button >
-                            <p>{ engLang ? ( 'Checkout' ) : ( 'Finalizar Compra' ) }</p>
-                            <ShoppingCartCheckoutIcon  />
-                        </button>
-                    </Link>
-                </div>
+                <Link to={ '/cart' }>
+                    <div className='cart-go-pay' >
+                        <p>{ engLang ? ( 'Checkout' ) : ( 'Finalizar Compra' ) }</p>
+                        <ShoppingCartCheckoutIcon  />
+                    </div>
+                </Link>
         </Menu>
     </React.Fragment>
     )

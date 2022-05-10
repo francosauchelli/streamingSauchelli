@@ -1,60 +1,82 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.dets-container {
+    margin-top: 20px;
+    width: fit-content;
+    border-radius: 5px;
 }
 
 .item-det-container {
-    /* border: 1px solid yellow; */
     width: 60vw;
-    height: 85vh;
+    height: auto;
+    border-radius: 3px;
 }
 
 .item-det-container > div {
     background-color: #0d0118cf;
 }
 
-
 .item-det-container > .det-card {
-    /* border: 1px solid red; */
     max-width: none;
     width: 100%;
-    height: 100%;
+    height: auto;
     display: flex;
     flex-wrap: wrap;
-    align-content: flex-start;
+    justify-content: center;
 }
 
 .det-card > .det-media {
-    height: 70%;
-    /* border: 1px solid orange; */
+    height: 380px;
     position: relative;
+    align-content: flex-start;
 }
 
 .det-card > .det-text {
     height: fit-content;
-    /* border: 1px solid blue; */
+    width: 90%;
+    box-sizing: border-box;
     color: #FC9918;
-    margin: 15px 25px;
     display: flex;
     flex-direction: column;
+    padding: 10px;
 }
 
 .det-content {
     position: absolute;
     color: #F14A16;
     background-color: #0d0118cf;
-    /* border: 4px solid green; */
     display: flex;
     justify-content: space-around;
-    width: 45%;
-    bottom: 0;
-    border-radius: 15px;
+    width: 300px;
+    bottom: 30px;
+    border-radius: 10px;
+}
+
+@media ( max-width: 560px ) {
+    .det-card > .det-media {
+        display: flex;
+        justify-content: center;
+    }
+
+    .det-content {
+        width: 300px;
+    }
+}
+
+@media ( max-width: 520px ) {
+    .det-content {
+        width: 250px;
+    }
+}
+
+@media ( max-width: 425px ) {
+    .item-det-container {
+        width: 90vw;
+        height: auto;
+        border-radius: 3px;
+    }
 }
 
 .det-content div {
     background-color: transparent;
-
 }
 
 .det-item-count {
@@ -63,9 +85,8 @@
 }
 
 .det-image {
-    object-fit: cover;
     width: 100%;
-    height: 100%;
+    height: 350px;
     position: absolute;
     top: 0px;
 }
@@ -91,7 +112,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
 }
 
 .det-content-sub {
@@ -104,10 +124,21 @@
     align-self: flex-end;
     display: flex;
     flex-direction: row;
-    width: 250px;
+    width: 200px;
     justify-content: space-around;
     margin-top: 40px;
+}
 
+@media ( max-width: 420px ) {
+    .det-pricing {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .det-pricing > div > p {
+        display: inline-block;
+        margin: 2px 5px;
+    }
 }
 
 .det-pricing > div > p {

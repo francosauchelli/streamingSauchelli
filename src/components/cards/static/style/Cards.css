@@ -1,11 +1,4 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 .item-container {
-    /* border: solid 1px yellow; */
     width: 250px;
     height: fit-content;
     margin: 10px;
@@ -39,4 +32,3 @@
     flex-wrap: nowrap;
     justify-content: space-between;
 }
-

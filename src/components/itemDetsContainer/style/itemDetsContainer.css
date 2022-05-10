@@ -1,12 +1,4 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* ! agregar modal */
 .dets-container {
-    width: 60%;
     height: 100%;
     -moz-box-shadow: 0 0 5px #f14a16;
     -webkit-box-shadow: 0 0 5px #f14a16;

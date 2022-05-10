@@ -1,18 +1,13 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiMenu-paper.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation0.MuiPopover-paper.css-aqqxug-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
-    background-color: #09040fc9;
+    background-color: #09040ff6;
     -moz-box-shadow: 0 0 5px #f14a16;
     -webkit-box-shadow: 0 0 5px #f14a16;
     box-shadow: 0 0 10px #f14a16;
     border-radius: 2px;
-    width: 300px;
+    width: fit-content;
     display: flex;
     flex-wrap: nowrap;
+    justify-content: center;
 }
 
 div > .css-aqqxug-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper:before {
@@ -36,7 +31,6 @@ div > .css-aqqxug-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper:bef
 }
 
 .cart-img {
-    /* border: 2px solid red; */
     width: 50px;
     height: 50px;
     display: flex;
@@ -54,33 +48,25 @@ div > .css-aqqxug-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper:bef
 }
 
 .cart-title {
-    /* border: 2px solid red; */
     color: #f14a16;
     font-weight:bold ;
 }
 
 .cart-qty {
-    /* border: 2px solid red; */
     color: #f14a16;
-
 }
 
 .cart-remove-btn * {
-    color: #f14a16;
+    color: #f11d16;
 }
 
 .cart-divider {
-    display: flex;
-    margin-left: 20px;
-
-    width: 70%;
-    border: 2px solid blue;
+    width: auto;
     background-color: #942d0d;
 }
 
 .cart-go-pay,
 .cart-go-pay > button {
-    /* border: 2px solid red; */
     background-color: transparent;
     border-style: none;
     width: 90%;
@@ -93,18 +79,23 @@ div > .css-aqqxug-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper:bef
     align-content: center;
 }
 
-.cart-go-pay > button:hover {
+.cart-go-pay:hover {
     cursor: pointer;
 }
 
 .cart-go-pay * {
     width: auto;
     width: fit-content;
-    /* border: 2px solid red; */
+    border: 2px solid blue;
+    background-color: blue;
     color: #f14a16;
     display: inline-block;
     margin: 0 10px;
-    font-weight: bolder;
+    font-weight: bold;
     background-color: transparent;
     border-style: none;
+}
+
+.cart-menu-item:hover {
+    cursor: default;
 }

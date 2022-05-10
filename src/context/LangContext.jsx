@@ -10,7 +10,6 @@ const LangProvider = ( { children } ) => {
     
     const handleChangeLang = () => {
         setEngLang( !engLang );
-
     }
 
     const dataContext = {

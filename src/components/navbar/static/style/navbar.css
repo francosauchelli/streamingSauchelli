@@ -2,21 +2,21 @@ header.main-header {
     width: 100%;
     height: auto;
     display: flex;
-    padding: 10px 10px;
+    padding: 10px 90px;
     box-sizing: border-box;
     align-items: center;
     justify-content: space-between;
     box-shadow: 5px 2px 20px #F14A16;
 }
 
-.header-logoCont {
+.header-logo-cont {
     width: 75px;
     height: 80px;
     justify-items: center;
     position: relative;
     align-items: center;
     text-align: center;
-    margin-left: 2%;
+    float: left;
 }
 
 .header-title {
@@ -76,13 +76,73 @@ header.main-header {
     }
 }
 
+.buttons-group-nav {
+    margin-right: 45px;
+}
+
 .buttons-navbar-container {
+    margin-right: 45px;
     display: flex;
     align-items: center;
 }
 
-.buttons-navbar-container div {
+.navbar-right-buttons {
     margin-right: 40px;
+    display: flex;
+    flex-direction: row;
+}
+
+.navbar-center-buttons {
+    display: flex;
+    flex-direction: row;
+    margin: 0 20px;
+}
+.navbar-right-buttons button {
+    background-color: transparent;
+    border: none;
+    width: 50px;
+    margin: 10px;
+    color: #FC9918;
+    cursor: pointer;
+}
+
+.menu-icon-responsive-view {
+    display: none;
+    color: #FC9918;
+}
+
+@media (max-width: 1100px) {
+    header.main-header {
+        margin-right: 10px;
+        padding-left: 50px;
+    }
+
+    .buttons-navbar-container {
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 900px) {
+    .buttons-navbar-container div {
+        margin: 0 0;
+        justify-content: flex-end;
+    }
+}
+
+@media (max-width: 768px) {
+    .buttons-group-nav {
+        display: none;
+    }
+
+    .menu-icon-responsive-view {
+        display: block;
+    }
+}
+
+@media (max-width: 450px) {
+    header.main-header {
+        padding: 10px 20px;
+    }
 }
 
 button.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.MuiButtonBase-root.MuiButtonGroup-grouped.MuiButtonGroup-groupedHorizontal.MuiButtonGroup-groupedText.MuiButtonGroup-groupedTextHorizontal.MuiButtonGroup-groupedTextPrimary.MuiButtonGroup-grouped.MuiButtonGroup-groupedHorizontal.MuiButtonGroup-groupedText.MuiButtonGroup-groupedTextHorizontal.MuiButtonGroup-groupedTextPrimary.css-1e6y48t-MuiButtonBase-root-MuiButton-root {
@@ -95,10 +155,8 @@ button.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.
     color: #FC9918;
 }
 
-
 a {
     text-decoration: none;
-
 }
 
 a .single-button-group:not(last-of-type) {
@@ -107,9 +165,4 @@ a .single-button-group:not(last-of-type) {
     border-right: 1px solid rgba(0, 0, 0, 0.23);
     border-right-width: 1px;
     border-right-style: solid;
-
-
 }
-
-
-

@@ -40,7 +40,7 @@ const ItemListContainer = ()=>{
         return itemsList;
     }
     
-
+    
     const filterByType = ( moviesList, type ) => {
         let arrayMovies = []
 
@@ -60,7 +60,7 @@ const ItemListContainer = ()=>{
             // filter by type
             if( movieType === type) {
                 arrayMovies = [ ...arrayMovies, movie]
-            }
+            } 
         })
         return setMovies( arrayMovies )
     }
@@ -70,8 +70,8 @@ const ItemListContainer = ()=>{
         setShowSkeleton( true );
         setMovies( [] );
 
-    // retrieve and filter the titles
-    getMovies().then( ( response ) => {
+        // retrieve and filter the titles
+        getMovies().then( ( response ) => {
             // to remove skeleton
             setShowSkeleton( false );
             // to get movies data
@@ -81,7 +81,7 @@ const ItemListContainer = ()=>{
                 filterByType( response, type);
             }
         }).finally( () => {
-        console.log("MockDB downloaded.")
+            console.log("MockDB downloaded.")
         })
     }, [ type, engLang ] )
 
@@ -99,7 +99,6 @@ const ItemListContainer = ()=>{
                     duration,
                     unitPrice
                 } = movie;
-
 
                 return(
                     !showSkeleton ? (
@@ -136,7 +135,6 @@ const ItemListContainer = ()=>{
                     : ( <></> )
                 )
             })}
-            {/* <ItemDetsContainer /> */}
         </div>
     )
 }

@@ -1,6 +1,4 @@
-import React, { useState,
-                useEffect,
-                useContext } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 // local files
 import CartContext from '../../context/CartContext';
@@ -16,6 +14,7 @@ import { Card,
 // styles
 import './style/itemDetail.css'
 
+
 const ItemDetail = ( props )=>{
     const { engLang } = useContext( LangContext );
     const { addProductsToCart } = useContext( CartContext );
@@ -30,7 +29,8 @@ const ItemDetail = ( props )=>{
             genre, 
             type, 
             duration,
-            unitPrice
+            unitPrice,
+            synopsis
         } = props;
 
 
@@ -56,11 +56,10 @@ const ItemDetail = ( props )=>{
                             </Typography>
                             {/* add div as button to avoid React's conflict */}
                             <div className='button-icon' >
-                                    Buy / Watch
+                                { engLang ? 
+                                    ( `Buy / Watch` ) 
+                                    : ( `Ver / Comprar` ) }
                             </div>
-                        </div>
-                        <div className='det-item-count'>
-                            {/* <ItemCount action={ settingCounterDet } /> */}
                         </div>
                         <div className='det-content-sub'>
                             <Typography variant="body2" >
@@ -78,13 +77,15 @@ const ItemDetail = ( props )=>{
                 <CardActions className="det-text">
                     <div className="det-synop">
                         <Typography variant="body2" >
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem accusantium cupiditate, voluptates voluptatem quam velit eaque minima ipsam expedita fugiat consectetur veritatis quos qui. Neque illum quos atque? Animi, necessitatibus. 
+                            { engLang ? 
+                                ( `${ synopsis }` ) 
+                                : ( `${ synopsis }` ) }
                         </Typography>
                     </div>
                     <div className='det-pricing'>
                         <div>
                             <Typography variant="body2" >
-                                Unit
+                                Un.
                             </Typography>
                             <Typography variant="body2" >
                                 ${ unitPrice }/Reprod.
@@ -95,11 +96,12 @@ const ItemDetail = ( props )=>{
                                 Plan
                             </Typography>
                             <Typography variant="body2" >
-                                $3,64/Month 
+                                { engLang ? 
+                                    ( `$3,64/Month` ) 
+                                    : ( `$3,64/Mes` ) }
                             </Typography>
                         </div>
                     </div>
-                    {/* TODO: agregar más funcionalidades */}
                 </CardActions>
             </Card>  
         </div>

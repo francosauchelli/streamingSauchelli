@@ -1,0 +1,30 @@
+.burger-menu-container .css-tlc64q-MuiPaper-root-MuiDialog-paper {
+    background-color: transparent;
+    margin-top: -70px;
+    margin-left: -20px;
+}
+
+.list-item-burger > a {
+    display: flex;
+    flex-direction: row;
+}
+
+.ul-burger-menu {
+    background-color: #09040fee;
+    -moz-box-shadow: 0 0 5px #f14a16;
+    -webkit-box-shadow: 0 0 5px #f14a16;
+    box-shadow: 6px 6px 12px #f14a16;
+    border-radius: 2px;
+}
+
+.list-item-burger svg {
+    color: #f14a16;
+}
+
+.list-item-burger span {
+    color: #FC9918;
+}
+
+a .avatar-burger-menu {
+    background-color: transparent;
+}

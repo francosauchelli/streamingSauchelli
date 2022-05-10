@@ -43,7 +43,7 @@ const ItemDetsContainer = () => {
         })
     }, [] );
 
-    const { img, title, genre, type, duration } = movieDetail
+    const { img, title, genre, type, duration, synopsis } = movieDetail
 
     return (
         <div className='dets-container' >
@@ -74,6 +74,12 @@ const ItemDetsContainer = () => {
                         Array.isArray( duration ) ?
                             ( engLang ? (duration[0]) : (duration[1]) ) 
                             : ( duration )
+                    }
+                    synopsis={ 
+                        // check the language only if it is an array
+                        Array.isArray( synopsis ) ?
+                            ( engLang ? (synopsis[0]) : (synopsis[1]) ) 
+                            : ( synopsis )
                     }
                     unitPrice= { movieDetail.unitPrice }
                 />

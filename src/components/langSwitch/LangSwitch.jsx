@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 // Material-ui
 import Switch from '@mui/material/Switch'
 // style

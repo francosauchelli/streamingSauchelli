@@ -3,11 +3,9 @@ import PropTypes from 'prop-types';
 import Skeleton from '@mui/material/Skeleton';
 import { Card,
     CardActionArea,
-    CardMedia,
     CardContent,
-    Typography,
-    CardActions,
-    Button} from '@mui/material';
+    CardActions 
+    } from '@mui/material';
 // style
 import './style/preloader.css'
 
